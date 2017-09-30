@@ -1,0 +1,76 @@
+﻿<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<!-- 引入腾讯地图api -->
+	<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
+	<style type="text/css">
+		#map {
+			width: 80%;
+			height: 680px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 地图容器一定要设置高度 -->
+	<div id="map">
+
+	</div>
+
+</body>
+
+</html>
+<script type="text/javascript">
+	
+	// function loadScript() {
+	// 	var script = document.createElement("script");
+	// 	script.type = "text/javascript";
+	// 	script.src = "http://map.qq.com/api/js?v=2.exp&callback=qqMap";
+	// 	document.body.appendChild(script);
+	// }
+	
+	qqMap();
+	function qqMap() {
+		var map = new qq.maps.Map(document.getElementById('map'));
+		//需要定位的位置坐标（x 轴和 y 轴）可以利用地图坐标生成器来生成具体的坐标
+		map.panTo(new qq.maps.LatLng(30.51394, 114.35062));
+
+		var center = new qq.maps.LatLng(30.51394, 114.35062);
+		var map = new qq.maps.Map(
+			document.getElementById("map"), {
+				center: center,
+				zoom: 15,
+				scrollwheel: false
+			}
+		);
+		// 以下为样式的设置，具体需查看腾讯地图api
+		var cssc = {
+			padding: '12px',
+			color: "#fff",
+			fontSize: "14px",
+			border: 'none',
+			borderRadius: "6px",
+			backgroundColor: "#386cca"
+		}
+		var marker = new qq.maps.Marker({
+			position: center,
+			map: map
+		});
+		var cirle = new qq.maps.Circle({
+			center: center,
+			radius: 500,
+			map: map,
+			strokeWeight: 1
+		});
+		var label = new qq.maps.Label({
+			position: center,
+			map: map,
+			style: cssc ,
+			offset: new qq.maps.Size(10, 5),
+			content: '武汉市珞狮南路雄楚广场<br>A1座1601-1602'
+		});
+	}
+
+</script>
